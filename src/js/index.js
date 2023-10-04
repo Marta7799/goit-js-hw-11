@@ -50,7 +50,7 @@ function getMoreImages() {
   page += 1;
   images(key, page, perPage)
     .then(({ data }) => {
-      getGallery(data.this);
+      getGallery(data.hits);
       lightbox.refresh();
       const allPages = Math.ceil(data.hits / perPage);
       if (page > allPages) {
@@ -76,7 +76,7 @@ function getGallery(data) {
         downloads,
       }) => {
         return `<div class="photo-card"> <a href="${largeImageURL}">
-                < img src = "${webformatURL}" alt = "${tags}" loading = "lazy" title="${tags}"/></a>
+                <img src = "${webformatURL}" alt = "${tags}" loading = "lazy" title="${tags}"/></a>
                     <div class="info">
                         <p class="info-item">
                             <b>Likes</b>${likes}
@@ -96,4 +96,14 @@ function getGallery(data) {
     )
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
+}
+
+if (gallery.firstElementChild) {
+  const { height: cardHeight } =
+    gallery.firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
 }
