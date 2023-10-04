@@ -6,6 +6,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
 const loadMore = document.querySelector('.load-more');
+const input = document.querySelector('input[name="searchQuery"]');
 const perPage = 40;
 let key = '';
 let page = 1;
@@ -24,6 +25,7 @@ function searchImages(e) {
   key = e.currentTarget.searchQuery.value.trim();
   loadMore.classList.add('is-hidden');
   clear();
+  input.value = '';
   if (!key) {
     Notiflix.Notify.info('Search images...');
     return;
