@@ -37,7 +37,7 @@ function searchImages(e) {
       } else {
         getGallery(data.hits);
         lightbox.refresh();
-        Notiflix.Notify.success('Hooray! We found ${data.totalHits} images.');
+        Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
         if (data.totalHits > perPage) {
           loadMore.classList.remove('is-hidden');
         }
