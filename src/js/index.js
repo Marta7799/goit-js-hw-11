@@ -51,7 +51,7 @@ function searchImages(e) {
 function getMoreImages() {
   page += 1;
   images(key, page, perPage)
-    .then(({ data }) => {
+    .then(data => {
       getGallery(data.hits);
       lightbox.refresh();
       const allPages = Math.ceil(data.hits / perPage);
