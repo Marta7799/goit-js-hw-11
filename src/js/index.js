@@ -31,7 +31,7 @@ function searchImages(e) {
     return;
   }
   images(key, page, perPage)
-    .then(({ data }) => {
+    .then(data => {
       if (!data.totalHits) {
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'

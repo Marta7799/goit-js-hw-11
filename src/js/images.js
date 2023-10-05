@@ -13,5 +13,5 @@ async function images(key, page, perPage) {
   const response = await axios.get(
     `?key=${API_KEY}&q=${key}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${perPage}`
   );
-  return response;
+  return response.data;
 }
